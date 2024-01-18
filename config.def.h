@@ -7,7 +7,8 @@
  */
 //static char *font = "Liberation Mono:pixelsize=12:antialias=true:autohint=true";
 //static char *font = "Scientifica:pixelsize=12:antialias=true:autohint=true";
-static char *font = "CozetteVector:pixelsize=12:antialias=true:autohint=true";
+//static char *font = "CozetteVector:pixelsize=16:antialias=true:autohint=true";
+static char *font = "JetbrainsMono Nerd Font:pixelsize=12:style=Regular";
 static int borderpx = 30;
 
 /*
@@ -98,7 +99,7 @@ unsigned int tabspaces = 4;
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
 
-	"#000000",
+	"#262626",
 	"#eb3c3e",
 	"#986b4e",
 	"#e7584e",

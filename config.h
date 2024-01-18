@@ -8,6 +8,7 @@
 //static char *font = "Liberation Mono:pixelsize=12:antialias=true:autohint=true";
 //static char *font = "Scientifica:pixelsize=12:antialias=true:autohint=true";
 static char *font = "CozetteVector:pixelsize=12:antialias=true:autohint=true";
+/* static char *font = "JetbrainsMono Nerd Font:pixelsize=12:style=Regular"; */
 static int borderpx = 30;
 
 /*
@@ -21,7 +22,7 @@ static int borderpx = 30;
 static char *shell = "/bin/sh";
 char *utmp = NULL;
 /* scroll program: to enable use a string like "scroll" */
-char *scroll = NULL;
+char *scroll = "scroll";
 char *stty_args = "stty raw pass8 nl -echo -iexten -cstopb 38400";
 
 /* identification sequence returned in DA and DECID */
@@ -98,51 +99,28 @@ unsigned int tabspaces = 4;
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
 
-	"#000000",
-	"#eb3c3e",
-	"#986b4e",
-	"#e7584e",
-	"#fc7062",
-	"#d2a66b",
-	"#27718c",
-	"#91c7cc",
-
-	"#648a8e",
-	"#eb3c3e",
-	"#986b4e",
-	"#e7584e",
-	"#fc7062",
-	"#d2a66b",
-	"#27718c",
-	"#91c7cc",
-
-
-/*	
-	// 8 normal colors
-	"black",
-	"red3",
-	"green3",
-	"yellow3",
-	"blue2",
-	"magenta3",
-	"cyan3",
-	"gray90",
-
-	// 8 bright colors
-	"gray50",
-	"red",
-	"green",
-	"yellow",
-	"#5c5cff",
-	"magenta",
-	"cyan",
-	"white",
-*/
+    "#1d2021", /* hard contrast: #1d2021 / soft contrast: #32302f */
+	"#cc241d",
+	"#98971a",
+	"#d79921",
+	"#458588",
+	"#b16286",
+	"#689d6a",
+	"#a89984",
+	"#928374",
+	"#fb4934",
+	"#b8bb26",
+	"#fabd2f",
+	"#83a598",
+	"#d3869b",
+	"#8ec07c",
+	"#ebdbb2",
 	[255] = 0,
-
 	/* more colors can be added after 255 to use with DefaultXX */
-	"#cccccc",
-	"#555555",
+	"#add8e6", /* 256 -> cursor */
+	"#555555", /* 257 -> rev cursor*/
+	"#282828", /* 258 -> bg */
+	"#ebdbb2", /* 259 -> fg */
 };
 
 
