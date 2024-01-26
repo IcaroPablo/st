@@ -1,0 +1,2 @@
+/etc/locale.conf deve ter todas as variáveis do comando locale
+inserir isso no makefile ?

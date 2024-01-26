@@ -1,0 +1,27 @@
+@@ -108,6 +109,17 @@
+ 	char state;
+ } TCursor;
+ 
++typedef struct _ImageList {
++	struct _ImageList *next, *prev;
++	unsigned char *pixels;
++	void *pixmap;
++	int width;
++	int height;
++	int x;
++	int y;
++	int should_delete;
++} ImageList;
++
+ /* Internal representation of the screen */
+ typedef struct {
+ 	int row;      /* nb row */
+@@ -126,6 +138,8 @@
+ 	int icharset; /* selected charset for sequence */
+ 	int numlock; /* lock numbers in keyboard */
+ 	int *tabs;
++	ImageList *images;     /* sixel images */
++	ImageList *images_alt; /* sixel images for alternate screen */
+ } Term;
+ 
+ /* Purely graphic info */
