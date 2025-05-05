@@ -948,8 +948,14 @@ ttyresize(int tw, int th)
 void
 ttyhangup()
 {
+    /* disable signal handler (fixes window not closing) */
+	signal(SIGCHLD, SIG_IGN);
+
 	/* Send SIGHUP to shell */
 	kill(pid, SIGHUP);
+
+    /* forcefully die */
+	die("tty was hung up\n");
 }
 
 int
