@@ -1,0 +1,10 @@
+# build artifacts - the Makefile regenerates all of these
+st
+*.o
+
+# patch leftovers. These were committed once already: config.def.h.orig,
+# config.def.h.rej and x.c.orig sat in the tree for years. patch(1) writes
+# them when a hunk fails, they are never worth keeping, and they are still
+# in git history if one is ever needed.
+*.orig
+*.rej
