@@ -33,6 +33,7 @@ enum glyph_attribute {
 	ATTR_WRAP       = 1 << 8,
 	ATTR_WIDE       = 1 << 9,
 	ATTR_WDUMMY     = 1 << 10,
+	ATTR_SIXEL      = 1 << 11,
 	ATTR_BOLD_FAINT = ATTR_BOLD | ATTR_FAINT,
 };
 
@@ -68,6 +69,66 @@ typedef struct {
 } Glyph;
 
 typedef Glyph *Line;
+
+typedef struct {
+	Glyph attr; /* current char attributes */
+	int x;
+	int y;
+	char state;
+} TCursor;
+
+/* sixel images attached to the screen. The list lives on Term, and x.c walks
+ * it in draw(); that is why Term moved here from st.c and why term is no
+ * longer static - the 2017 patch was written when this was the layout. */
+typedef struct _ImageList {
+	struct _ImageList *next, *prev;
+	unsigned char *pixels;
+	void *pixmap;
+	int width;
+	int height;
+	int x;
+	int y;
+	int should_delete;
+} ImageList;
+
+/* Internal representation of the screen */
+typedef struct {
+	int row;      /* nb row */
+	int col;      /* nb col */
+	Line *line;   /* screen */
+	Line *alt;    /* alternate screen */
+	int *dirty;   /* dirtyness of lines */
+	TCursor c;    /* cursor */
+	int ocx;      /* old cursor col */
+	int ocy;      /* old cursor row */
+	int top;      /* top    scroll limit */
+	int bot;      /* bottom scroll limit */
+	int mode;     /* terminal mode flags */
+	int esc;      /* escape state flags */
+	char trantbl[4]; /* charset table translation */
+	int charset;  /* current charset */
+	int icharset; /* selected charset for sequence */
+	int *tabs;
+	Rune lastc;   /* last printed char outside of sequence, 0 if control */
+	ImageList *images;     /* sixel images */
+	ImageList *images_alt; /* sixel images, alternate screen */
+} Term;
+
+extern Term term;
+
+/* Purely graphic info. In st.h rather than x.c because the sixel code in
+ * st.c needs win.cw / win.ch to work out how many cells an image covers. */
+typedef struct {
+	int tw, th; /* tty width and height */
+	int w, h; /* window width and height */
+	int hborderpx, vborderpx;
+	int ch; /* char height */
+	int cw; /* char width  */
+	int mode; /* window state/mode flags */
+	int cursor; /* cursor style */
+} TermWindow;
+
+extern TermWindow win;
 
 typedef union {
 	int i;
