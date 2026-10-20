@@ -22,9 +22,23 @@ plain-text files.
   to an untracked `config.h` - but tracking the real config means the build
   is reproducible from a clone, and leaving the template alone means
   upstream's changes to it merge without a conflict every release.
+- sixel graphics, from
+  [saitoha's patch](https://gist.github.com/saitoha/70e0fdf22e3e8f63ce937c7f7da71809)
+  ported to 0.9.3 (`sixel.c`, `sixel.h`, `sixel_hls.c`, `sixel_hls.h`)
 
-Sixel support and Luke Smith's build both live on their own branches,
-`sixel` and `luke`, and are deliberately not merged here.
+Luke Smith's build lives on its own branch, `luke`, and is deliberately not
+merged here.
+
+## Licence
+
+st itself is under the MIT/X Consortium License, see `LICENSE`. `sixel_hls.c`
+(Ross Combs, from xterm) is under a similar permissive licence.
+
+**`sixel.c` is under the GNU General Public License v3 or later** (it comes
+from mintty). Because of that, a binary built from this tree is a combined
+work and can only be distributed under the terms of the GPL v3 or later. The
+MIT-licensed source files keep their own licence, which is compatible with
+the GPL.
 
 ## Building
 
